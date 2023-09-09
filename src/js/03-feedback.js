@@ -1,10 +1,6 @@
 import throttle  from "lodash.throttle";
 
 
-// Зроби так, щоб сховище оновлювалось не частіше, ніж раз на 500 мілісекунд. Для цього додай до проекту і використовуй бібліотеку lodash.throttle.
-
-
-
 const DATA_KEY = "feedback-form-state";
 
 const formEl = document.querySelector('.feedback-form');
@@ -38,7 +34,7 @@ if (parsedLocalData) {
     messageEL.value = parsedLocalData.message || "";
 }
 
-//*** Submit: show data object and clear fields+LS
+//*** Submit: show data object and clear all data
 
 formEl.addEventListener('submit', handleSubmit);
 
@@ -48,5 +44,7 @@ function handleSubmit(evt) {
     console.log(userDate);
     inputEL.value = "";
     messageEL.value = "";
+    userDate.email = "";
+    userDate.message = "";
     localStorage.clear();
 }
